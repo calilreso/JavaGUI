@@ -15,6 +15,7 @@ public class GUIDemo extends JFrame
     private JPanel panel;
     private JButton biggerButton;
     private JButton smallerButton;
+    private JButton seizureButton;
 
     /**
      * Set up the application.
@@ -27,11 +28,14 @@ public class GUIDemo extends JFrame
         panel = new JPanel();
         biggerButton = new JButton("BIGGER");
         smallerButton = new JButton("SMALLER");
+	seizureButton = new JButton("???");
         biggerButton.addActionListener(new ButtonHandler());
         smallerButton.addActionListener(new ButtonHandler());
+	seizureButton.addActionListener(new ButtonHandler());
         add(panel);
         panel.add(biggerButton);
         panel.add(smallerButton);
+	panel.add(seizureButton);
         setVisible(true);
     }
 
@@ -53,10 +57,15 @@ public class GUIDemo extends JFrame
             {
                 setSize(size.width + 10, size.height + 10);
             }
-            else
+            else if (e.getSource().equals(smallerButton))
             {
                 setSize(size.width - 10, size.height - 10);
             }
+	    else
+	    {
+		setTitle("PROCRASTINATION STATION");
+		setSize(size.width + 1250, 10);
+	    }
 
         }
     }
